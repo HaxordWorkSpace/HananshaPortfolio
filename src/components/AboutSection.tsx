@@ -1,14 +1,64 @@
 import { Music, Mic2, Users, Calendar } from "lucide-react";
 import singerHero from "@/assets/singer-hero.png";
 import { ScrollAnimation } from "./ScrollAnimation";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { icon: Music, value: "50+", label: "Songs Released" },
-  { icon: Mic2, value: "120+", label: "Live Shows" },
-  { icon: Users, value: "100k+", label: "Followers" },
-  { icon: Calendar, value: "5+", label: "Years Active" },
+  { icon: Music, value: 50, suffix: "+", label: "Songs Released" },
+  { icon: Mic2, value: 120, suffix: "+", label: "Live Shows" },
+  { icon: Users, value: 3, suffix: "M", label: "Followers" },
+  { icon: Calendar, value: 5, suffix: "+", label: "Years Active" },
 ];
+
+// Counter Component
+const CountUp = ({ end, suffix, duration = 2000 }: { end: number; suffix: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          const startTime = Date.now();
+          const startValue = 0;
+
+          const animate = () => {
+            const currentTime = Date.now();
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentCount = startValue + (end - startValue) * easeOutQuart;
+
+            setCount(currentCount);
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+
+          animate();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <div ref={counterRef} className="text-3xl font-display font-bold mb-2 text-gradient-primary">
+      {Math.round(count)}{suffix}
+    </div>
+  );
+};
 
 const AboutSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -112,7 +162,7 @@ const AboutSection = () => {
               <ScrollAnimation key={index} delay={0.8 + index * 0.1}>
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/50 to-secondary/30 border border-border/30 hover:border-primary/50 hover:bg-gradient-to-br hover:from-primary/10 hover:to-primary/5 transition-all duration-300 group">
                   <stat.icon className="w-8 h-8 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" />
-                  <div className="text-3xl font-display font-bold mb-2 text-gradient-primary">{stat.value}</div>
+                  <CountUp end={stat.value} suffix={stat.suffix} />
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               </ScrollAnimation>

@@ -76,10 +76,10 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
               e.preventDefault();
               handleNavClick("#home");
             }}
-            className="flex items-center gap-2 font-display text-2xl font-bold tracking-tight"
+            className="flex items-center gap-0 font-display text-2xl font-bold tracking-tighter"
           >
             <span className="text-primary">H</span>
-            <span className="text-foreground">ANAN SHA</span>
+            <span className="text-foreground">anansha</span>
           </a>
 
           <button
@@ -146,12 +146,12 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
               e.preventDefault();
               handleNavClick("#home");
             }}
-            className="font-display font-bold tracking-tighter leading-none block text-center"
+            className="font-display font-bold tracking-tight leading-none block text-center"
           >
             {isExpanded ? (
               <>
-                <span className="block text-primary text-3xl">HANAN</span>
-                <span className="block text-foreground text-3xl">SHA</span>
+                <span className="inline text-primary text-3xl">H</span>
+                <span className="inline text-foreground text-3xl">anansha</span>
               </>
             ) : (
               <span className="block text-primary text-2xl">HS</span>

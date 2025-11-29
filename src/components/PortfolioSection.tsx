@@ -1,48 +1,66 @@
 import { Play, Image as ImageIcon, SkipBack, SkipForward, ArrowRight, Heart } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
+import hanan1_1 from "@/assets/hanan1 (1).jpg";
+import hanan1_2 from "@/assets/hanan1 (2).jpg";
+import hanan1_3 from "@/assets/hanan1 (3).jpg";
+import album1 from "@/assets/album-1.png";
+import album2 from "@/assets/album-2.png";
+import album3 from "@/assets/album-3.png";
 
 const portfolioItems = [
   {
     id: 1,
     type: "video",
-    title: "Live at Royal Arena",
-    image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2070&auto=format&fit=crop",
-    category: "Live Performance"
+    title: "Latest Album",
+    image: hanan1_1,
+    category: "Full Album",
+    spotifyUrl: "https://open.spotify.com/embed/album/626TXwCa6PtZCdXv8yubvQ?utm_source=generator",
+    isAlbum: true
   },
   {
     id: 2,
-    type: "image",
-    title: "Midnight Jazz Session",
-    image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2070&auto=format&fit=crop",
-    category: "Photoshoot"
+    type: "video",
+    title: "Featured Track",
+    image: hanan1_2,
+    category: "Single",
+    spotifyUrl: "https://open.spotify.com/track/1kl8HxZrfUluGnW5rorqzC?si=5463ebe202464ea0",
+    isAlbum: false
   },
   {
     id: 3,
     type: "video",
-    title: "Official Music Video",
-    image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2070&auto=format&fit=crop",
-    category: "Music Video"
+    title: "New Release",
+    image: hanan1_3,
+    category: "Single",
+    spotifyUrl: "https://open.spotify.com/track/0fzIiQPOjv8kcSLCYTUSf3?si=6fa682fbc6844fe1",
+    isAlbum: false
   },
   {
     id: 4,
-    type: "image",
-    title: "Studio Vibes",
-    image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop",
-    category: "Behind the Scenes"
+    type: "video",
+    title: "Live Performance",
+    image: album1,
+    category: "Live Sessions",
+    spotifyUrl: null,
+    isAlbum: false
   },
   {
     id: 5,
-    type: "video",
-    title: "Acoustic Sessions",
-    image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=2070&auto=format&fit=crop",
-    category: "Unplugged"
+    type: "image",
+    title: "Behind The Scenes",
+    image: album2,
+    category: "Studio",
+    spotifyUrl: null,
+    isAlbum: false
   },
   {
     id: 6,
-    type: "image",
-    title: "Album Cover Art",
-    image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2070&auto=format&fit=crop",
-    category: "Art Direction"
+    type: "video",
+    title: "Music Video",
+    image: album3,
+    category: "Official Video",
+    spotifyUrl: null,
+    isAlbum: false
   },
 ];
 
@@ -68,83 +86,98 @@ const PortfolioSection = () => {
         </ScrollAnimation>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center md:pb-0 scrollbar-hide">
           {portfolioItems.map((item, index) => (
-            <ScrollAnimation key={item.id} delay={index * 0.1} direction="up">
-              <div className="group relative w-[340px] h-[460px] transition-all duration-500 hover:-translate-y-2 filter drop-shadow-lg hover:drop-shadow-[0_20px_40px_rgba(225,29,72,0.3)]">
+            <ScrollAnimation key={item.id} delay={index * 0.1} direction="up" className="snap-center shrink-0">
+              <div className="group relative w-[300px] md:w-[340px] h-[400px] md:h-[460px] transition-all duration-500 hover:-translate-y-2 filter drop-shadow-lg hover:drop-shadow-[0_20px_40px_rgba(225,29,72,0.3)]">
                 <div
                   className="absolute inset-0 bg-secondary/20 overflow-hidden transition-all duration-500"
                   style={{
                     clipPath: "polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px)",
                   }}
                 >
-                  {/* Border Effect (simulated with inner shadow/inset) */}
-                  <div className="absolute inset-0 pointer-events-none z-20 border-[1px] border-white/10"
+                  {/* Border Effect */}
+                  <div className="absolute inset-0 pointer-events-none z-30 border-[1px] border-white/10"
                     style={{
                       clipPath: "polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px)",
                     }}
                   />
 
-                  {/* Background Image with Zoom Effect */}
-                  <div className="absolute inset-0">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60" />
-                  </div>
-
-                  {/* Content Container */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                    {/* Top Bar */}
-                    <div className="flex justify-between items-start opacity-0 transform -translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                      <span className="px-3 py-1 rounded-sm text-xs font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-lg" style={{ clipPath: "polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px)" }}>
-                        {item.category}
-                      </span>
-                      <button className="p-2 bg-white/10 backdrop-blur-md text-white hover:bg-primary hover:text-white transition-colors border border-white/20 shadow-lg group/btn" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}>
-                        <Heart className="w-4 h-4 group-hover/btn:fill-current transition-colors" />
-                      </button>
-                    </div>
-
-                    {/* Center Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transform scale-0 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 group-hover:shadow-[0_0_30px_rgba(225,29,72,0.5)]" style={{ clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" }}>
+                  {/* Content Behind Cover - Music Controllers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-black via-primary/20 to-black flex flex-col items-center justify-center p-6 gap-6">
+                    {/* Title */}
+                    <div className="text-center">
+                      <div className="mb-3 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary">
                         {item.type === "video" ? (
-                          <Play className="w-6 h-6 text-white fill-white ml-1" />
+                          <Play className="w-8 h-8 fill-current" />
                         ) : (
-                          <ImageIcon className="w-6 h-6 text-white" />
+                          <ImageIcon className="w-8 h-8" />
                         )}
                       </div>
-                    </div>
-
-                    {/* Bottom Content */}
-                    <div className="transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                       <h3 className="font-display font-bold text-2xl text-white mb-2 drop-shadow-lg">
                         {item.title}
                       </h3>
+                      <span className="px-3 py-1 rounded-sm text-xs font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-lg inline-block" style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px)" }}>
+                        {item.category}
+                      </span>
+                    </div>
 
-                      {/* Music Player Bar (Slides up on hover) */}
-                      <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500">
-                        <div className="pt-4 mt-4 border-t border-white/20 flex items-center justify-between gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                          <div className="flex items-center gap-3">
-                            <button className="text-white/70 hover:text-white transition-colors hover:scale-110">
-                              <SkipBack className="w-5 h-5" />
-                            </button>
-                            <button className="text-white/70 hover:text-white transition-colors hover:scale-110">
-                              <Play className="w-5 h-5 fill-white" />
-                            </button>
-                            <button className="text-white/70 hover:text-white transition-colors hover:scale-110">
-                              <SkipForward className="w-5 h-5" />
-                            </button>
-                          </div>
-                          <button className="text-xs font-bold uppercase tracking-wider text-primary hover:text-white transition-colors flex items-center gap-1 group/link">
-                            View <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
+                    {/* Spotify Player or Music Controllers */}
+                    {item.spotifyUrl ? (
+                      <div className="w-full max-w-[280px]">
+                        <iframe
+                          src={item.isAlbum ? item.spotifyUrl : `https://open.spotify.com/embed/track/${item.spotifyUrl.split('/track/')[1].split('?')[0]}`}
+                          width="100%"
+                          height={item.isAlbum ? "352" : "152"}
+                          frameBorder="0"
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy"
+                          className="rounded-lg"
+                        ></iframe>
+                      </div>
+                    ) : (
+                      <>
+                        {/* Music Controllers */}
+                        <div className="flex items-center gap-6 bg-black/40 backdrop-blur-md px-6 py-4 rounded-full border border-white/10">
+                          <button className="text-white/70 hover:text-primary transition-colors hover:scale-125 transform">
+                            <SkipBack className="w-6 h-6" />
+                          </button>
+                          <button className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/20">
+                            <Play className="w-6 h-6 ml-1 fill-white" />
+                          </button>
+                          <button className="text-white/70 hover:text-primary transition-colors hover:scale-125 transform">
+                            <SkipForward className="w-6 h-6" />
                           </button>
                         </div>
-                      </div>
-                    </div>
+
+                        {/* Action Button */}
+                        <a
+                          href={item.spotifyUrl || "#portfolio"}
+                          target={item.spotifyUrl ? "_blank" : "_self"}
+                          rel={item.spotifyUrl ? "noopener noreferrer" : undefined}
+                          className="text-sm font-bold uppercase tracking-wider text-primary hover:text-white transition-colors flex items-center gap-2 group/link border-b-2 border-primary/50 pb-1 hover:border-white"
+                        >
+                          {item.spotifyUrl ? "Listen on Spotify" : "View Project"} <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                        </a>
+                      </>
+                    )}
+
+                    {/* Heart Button */}
+                    <button className="absolute top-4 right-4 p-2 bg-white/10 backdrop-blur-md text-white hover:bg-primary hover:text-white transition-colors border border-white/20 shadow-lg group/btn" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}>
+                      <Heart className="w-4 h-4 group-hover/btn:fill-current transition-colors" />
+                    </button>
+                  </div>
+
+                  {/* Single Cover Image - Slides Up on Hover */}
+                  <div
+                    className="absolute inset-0 transition-transform duration-700 ease-out group-hover:-translate-y-full z-20"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
                 </div>
               </div>
