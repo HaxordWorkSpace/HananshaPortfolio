@@ -1,4 +1,5 @@
 import heroImage from "@/assets/Hero.jpg";
+import heroMobileImage from "@/assets/HeroMobile.png";
 // Note: HEIC files are not standard for web browsers. 
 // If you want to use the HEIC file, please convert it to JPG/PNG.
 // I am using the JPG version provided.
@@ -11,36 +12,39 @@ const HeroSection = () => {
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Hero Background"
-          className="w-full h-full object-cover"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={heroMobileImage} />
+          <img
+            src={heroImage}
+            alt="Hero Background"
+            className="w-full h-full object-cover"
+          />
+        </picture>
       </div>
 
       {/* Main Content */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center text-center pb-16 px-4">
+      <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center text-center pb-12 px-4">
 
         <div className="animate-fade-up">
-          <span className="inline-block py-1 px-3 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-widest uppercase mb-6 backdrop-blur-sm">
+          <span className="inline-block py-1 px-3 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-widest uppercase mb-2 backdrop-blur-sm">
             Official Portfolio
           </span>
         </div>
 
-        <p className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl font-light tracking-wide animate-fade-up animation-delay-400">
+        <p className="mt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-light tracking-wide animate-fade-up animation-delay-400">
           Singer <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer
         </p>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-6 animate-fade-up animation-delay-600">
+        <div className="mt-4 flex flex-row gap-3 animate-fade-up animation-delay-600">
           <a
             href="#portfolio"
-            className="btn-primary min-w-[180px]"
+            className="btn-primary min-w-[130px] px-4"
           >
             View Work
           </a>
           <a
             href="#contact"
-            className="btn-outline min-w-[180px] border-white/20 text-white hover:bg-white hover:text-black"
+            className="btn-outline min-w-[130px] px-4 border-white/20 text-white hover:bg-white hover:text-black"
           >
             Contact Me
           </a>
