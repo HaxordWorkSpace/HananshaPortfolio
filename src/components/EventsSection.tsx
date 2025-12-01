@@ -1,5 +1,7 @@
-import { Calendar, MapPin, Clock, Ticket, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Calendar, MapPin, Clock, Ticket, ArrowRight, X } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const events = [
   {
@@ -65,6 +67,7 @@ const events = [
 ];
 
 const UpcomingEventsSection = () => {
+  const [selectedEvent, setSelectedEvent] = useState<typeof events[0] | null>(null);
   const line1Events = events.filter(e => e.line === 1);
   const line2Events = events.filter(e => e.line === 2);
 
@@ -91,10 +94,10 @@ const UpcomingEventsSection = () => {
           <div className="mb-12 overflow-hidden">
             <div className="flex gap-8 floating-line-left">
               {line1Events.map((event) => (
-                <EventCard key={event.id} event={event} />
+                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
               ))}
               {line1Events.map((event) => (
-                <EventCard key={`${event.id}-clone`} event={event} />
+                <EventCard key={`${event.id}-clone`} event={event} onClick={() => setSelectedEvent(event)} />
               ))}
             </div>
           </div>
@@ -105,15 +108,81 @@ const UpcomingEventsSection = () => {
           <div className="overflow-hidden">
             <div className="flex gap-8 floating-line-right">
               {line2Events.map((event) => (
-                <EventCard key={event.id} event={event} />
+                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
               ))}
               {line2Events.map((event) => (
-                <EventCard key={`${event.id}-clone`} event={event} />
+                <EventCard key={`${event.id}-clone`} event={event} onClick={() => setSelectedEvent(event)} />
               ))}
             </div>
           </div>
         </ScrollAnimation>
       </div>
+
+      <AnimatePresence>
+        {selectedEvent && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedEvent(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-card border border-primary/20 rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <button
+                onClick={() => setSelectedEvent(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-primary transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="relative h-64">
+                <img
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+              </div>
+
+              <div className="p-6 md:p-8">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20">
+                  <selectedEvent.icon className="w-6 h-6 text-primary" />
+                </div>
+
+                <h3 className="font-display font-bold text-2xl md:text-3xl mb-4">
+                  {selectedEvent.title}
+                </h3>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <Calendar className="w-5 h-5 text-primary" />
+                    <span>{selectedEvent.date}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    <span>{selectedEvent.location}</span>
+                  </div>
+                </div>
+
+                <p className="text-muted-foreground mb-8">
+                  {selectedEvent.description}
+                </p>
+
+                <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-primary/90 transition-colors">
+                  Get Tickets
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <style>{`
         .floating-line-left {
@@ -167,9 +236,12 @@ const UpcomingEventsSection = () => {
   );
 };
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, onClick }: { event: any, onClick?: () => void }) => {
   return (
-    <div className="event-card group relative rounded-3xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border border-primary/20">
+    <div
+      onClick={onClick}
+      className="event-card group relative rounded-3xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border border-primary/20"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <img
