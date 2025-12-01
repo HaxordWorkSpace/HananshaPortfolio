@@ -7,6 +7,7 @@ interface ScrollAnimationProps {
     className?: string;
     delay?: number;
     direction?: "up" | "down" | "left" | "right";
+    viewportMargin?: string;
 }
 
 export const ScrollAnimation = ({
@@ -14,9 +15,10 @@ export const ScrollAnimation = ({
     className = "",
     delay = 0,
     direction = "up",
+    viewportMargin = "-100px",
 }: ScrollAnimationProps) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: viewportMargin as any });
 
     const directions = {
         up: { y: 50, x: 0 },

@@ -43,7 +43,7 @@ const CountUp = ({ end, suffix, duration = 2000 }: { end: number; suffix: string
           animate();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
     if (counterRef.current) {
@@ -156,10 +156,10 @@ const AboutSection = () => {
         </div>
 
         {/* Stats Section */}
-        <ScrollAnimation delay={0.7}>
+        <ScrollAnimation delay={0.2} viewportMargin="-50px">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
             {stats.map((stat, index) => (
-              <ScrollAnimation key={index} delay={0.8 + index * 0.1}>
+              <ScrollAnimation key={index} delay={0.1 + index * 0.1} viewportMargin="-50px">
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/50 to-secondary/30 border border-border/30 hover:border-primary/50 hover:bg-gradient-to-br hover:from-primary/10 hover:to-primary/5 transition-all duration-300 group">
                   <stat.icon className="w-8 h-8 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" />
                   <CountUp end={stat.value} suffix={stat.suffix} />

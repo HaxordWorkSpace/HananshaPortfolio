@@ -14,7 +14,7 @@ const socialLinks = [
   { icon: FaFacebookF, href: "#", label: "Facebook" },
   { icon: FaTwitter, href: "#", label: "Twitter" },
   { icon: FaPinterestP, href: "#", label: "Pinterest" },
-  { icon: FaInstagram, href: "#", label: "Instagram" },
+  { icon: FaInstagram, href: "https://www.instagram.com/hanaaaneyy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
 ];
 
 const Footer = () => {
@@ -33,10 +33,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2 space-y-4">
-            <a href="#home" className="flex items-center gap-2 font-display text-3xl font-bold tracking-tight">
-              <span className="text-3xl">🎵</span>
-              <span className="text-foreground">HANAN</span>
-              <span className="text-primary">SHA</span>
+            <a href="#home" className="flex items-center gap-0 font-display text-2xl font-bold tracking-tighter">
+              <span className="text-primary">H</span>
+              <span className="text-foreground">anansha</span>
             </a>
             <p className="text-muted-foreground max-w-md">
               Creating soulful melodies that touch hearts and inspire millions.
