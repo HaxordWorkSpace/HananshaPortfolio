@@ -117,19 +117,19 @@ const UpcomingEventsSection = () => {
 
       <style>{`
         .floating-line-left {
-          animation: floatLeft 12s linear infinite;
+          animation: floatLeft 4s linear infinite;
         }
 
         .floating-line-left:hover {
-          animation: none;
+          animation-play-state: paused;
         }
 
         .floating-line-right {
-          animation: floatRight 12s linear infinite;
+          animation: floatRight 4s linear infinite;
         }
 
         .floating-line-right:hover {
-          animation: none;
+          animation-play-state: paused;
         }
 
         @keyframes floatLeft {
@@ -152,8 +152,15 @@ const UpcomingEventsSection = () => {
 
         .event-card {
           flex-shrink: 0;
-          width: 320px;
-          height: 400px;
+          width: 260px;
+          height: 280px;
+        }
+
+        @media (min-width: 768px) {
+          .event-card {
+            width: 320px;
+            height: 400px;
+          }
         }
       `}</style>
     </section>
@@ -174,14 +181,14 @@ const EventCard = ({ event }) => {
       </div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+      <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 text-white">
         {/* Icon */}
-        <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 group-hover:scale-110 transform transition-transform duration-300">
-          <event.icon className="w-6 h-6 text-primary" />
+        <div className="mb-2 md:mb-4 inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 group-hover:scale-110 transform transition-transform duration-300">
+          <event.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
         </div>
 
         {/* Title */}
-        <h3 className="font-display font-semibold text-2xl mb-2 transition-all duration-300">
+        <h3 className="font-display font-semibold text-xl md:text-2xl mb-2 transition-all duration-300">
           {event.title}
         </h3>
 
@@ -196,7 +203,7 @@ const EventCard = ({ event }) => {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">
+        <p className="text-sm text-muted-foreground mb-2 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">
           {event.description}
         </p>
 

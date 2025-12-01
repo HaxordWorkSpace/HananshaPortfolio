@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { Play, Image as ImageIcon, SkipBack, SkipForward, ArrowRight, Heart } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import hanan1_1 from "@/assets/hanan1 (1).jpg";
@@ -65,6 +66,29 @@ const portfolioItems = [
 ];
 
 const PortfolioSection = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const cardWidth = 332; // 300px card + 32px gap
+      const index = Math.round(container.scrollLeft / cardWidth);
+      setActiveSlide(index);
+    }
+  };
+
+  const scrollToSlide = (index: number) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const cardWidth = 332; // 300px card + 32px gap
+      container.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+      setActiveSlide(index);
+    }
+  };
   return (
     <section id="portfolio" className="section-padding relative bg-gradient-to-b from-background to-background/95 overflow-hidden">
       {/* Background elements */}
@@ -86,7 +110,11 @@ const PortfolioSection = () => {
         </ScrollAnimation>
 
         {/* Portfolio Grid */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center md:pb-0 scrollbar-hide">
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto snap-x snap-mandatory pb-8 gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center md:pb-0 scrollbar-hide"
+        >
           {portfolioItems.map((item, index) => (
             <ScrollAnimation key={item.id} delay={index * 0.1} direction="up" className="snap-center shrink-0">
               <div className="group relative w-[300px] md:w-[340px] h-[400px] md:h-[460px] transition-all duration-500 hover:-translate-y-2 filter drop-shadow-lg hover:drop-shadow-[0_20px_40px_rgba(225,29,72,0.3)]">
@@ -182,6 +210,19 @@ const PortfolioSection = () => {
                 </div>
               </div>
             </ScrollAnimation>
+          ))}
+        </div>
+
+        {/* Mobile Pagination Dots */}
+        <div className="flex justify-center gap-2 mt-4 md:hidden">
+          {portfolioItems.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToSlide(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${activeSlide === index ? "w-8 bg-primary" : "w-2 bg-primary/30"
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
 
