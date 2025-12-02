@@ -2,6 +2,21 @@ import { useState } from "react";
 import { Calendar, MapPin, Clock, Ticket, ArrowRight, X } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { motion, AnimatePresence } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
+import hanan1_1 from "@/assets/hanan1 (1).jpg";
+import hanan1_2 from "@/assets/hanan1 (2).jpg";
+import hanan1_3 from "@/assets/hanan1 (3).jpg";
+import portfolio1 from "@/assets/portfolio1.jpg";
+import portfolio2 from "@/assets/portfolio2.jpg";
+import portfolio3 from "@/assets/portfolio3.jpg";
+import portfolio4 from "@/assets/portfolio4.jpg";
+import portfolio5 from "@/assets/portfolio5.jpg";
+import portfolio6 from "@/assets/portfolio6.jpg";
+import album1 from "@/assets/album-1.png";
+import album2 from "@/assets/album-2.png";
+import album3 from "@/assets/album-3.png";
 
 const events = [
   {
@@ -11,7 +26,7 @@ const events = [
     date: "July 15-17, 2025",
     location: "Central Park, NYC",
     description: "Unforgettable night of live performances with multiple artists across genres.",
-    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500&h=400&fit=crop",
+    image: hanan1_1,
     line: 1,
   },
   {
@@ -21,7 +36,7 @@ const events = [
     date: "August 2025",
     location: "Paris, London, Berlin",
     description: "Embarking on an exciting tour across major European cities with premium experiences.",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=400&fit=crop",
+    image: hanan1_2,
     line: 2,
   },
   {
@@ -31,7 +46,7 @@ const events = [
     date: "June 20, 2025",
     location: "Recording Studio LA",
     description: "Exclusive workshop on professional vocal recording techniques with industry experts.",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=400&fit=crop",
+    image: hanan1_3,
     line: 1,
   },
   {
@@ -41,7 +56,7 @@ const events = [
     date: "September 10, 2025",
     location: "The Fillmore, SF",
     description: "Celebrating new album release with live performances and exclusive fan interactions.",
-    image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=500&h=400&fit=crop",
+    image: portfolio1,
     line: 2,
   },
   {
@@ -51,7 +66,7 @@ const events = [
     date: "July 22, 2025",
     location: "Blue Note Jazz Club",
     description: "Intimate jazz performances featuring collaborative sessions with renowned musicians.",
-    image: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=500&h=400&fit=crop",
+    image: portfolio2,
     line: 1,
   },
   {
@@ -61,7 +76,67 @@ const events = [
     date: "October 2025",
     location: "Tokyo, Seoul, Bangkok",
     description: "Grand tour across Asia with electrifying performances and meet-and-greet events.",
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=400&fit=crop",
+    image: portfolio3,
+    line: 2,
+  },
+  {
+    id: 7,
+    icon: Ticket,
+    title: "Winter Gala Performance",
+    date: "December 15, 2025",
+    location: "Royal Albert Hall, London",
+    description: "A magical evening of classical and contemporary hits in a historic venue.",
+    image: portfolio4,
+    line: 1,
+  },
+  {
+    id: 8,
+    icon: Calendar,
+    title: "Charity Benefit Concert",
+    date: "November 05, 2025",
+    location: "Madison Square Garden, NYC",
+    description: "Supporting global causes with powerful performances and special guest appearances.",
+    image: portfolio5,
+    line: 2,
+  },
+  {
+    id: 9,
+    icon: Clock,
+    title: "Vocal Masterclass",
+    date: "October 12, 2025",
+    location: "Berklee College of Music",
+    description: "Sharing techniques and experiences with the next generation of artists.",
+    image: portfolio6,
+    line: 1,
+  },
+  {
+    id: 10,
+    icon: MapPin,
+    title: "Live at Sydney Opera House",
+    date: "January 20, 2026",
+    location: "Sydney Opera House, Australia",
+    description: "An iconic performance at one of the world's most famous performing arts centers.",
+    image: album1,
+    line: 2,
+  },
+  {
+    id: 11,
+    icon: Ticket,
+    title: "Acoustic Sunset Sessions",
+    date: "August 05, 2025",
+    location: "Santa Monica Pier, CA",
+    description: "Stripped-back acoustic sets with a breathtaking ocean backdrop.",
+    image: album2,
+    line: 1,
+  },
+  {
+    id: 12,
+    icon: Calendar,
+    title: "World Music Awards",
+    date: "February 14, 2026",
+    location: "Dubai Opera, UAE",
+    description: "A star-studded night celebrating the best in global music.",
+    image: album3,
     line: 2,
   },
 ];
@@ -70,6 +145,14 @@ const UpcomingEventsSection = () => {
   const [selectedEvent, setSelectedEvent] = useState<typeof events[0] | null>(null);
   const line1Events = events.filter(e => e.line === 1);
   const line2Events = events.filter(e => e.line === 2);
+
+  const [emblaRef1] = useEmblaCarousel({ loop: true, align: "center" }, [
+    Autoplay({ delay: 3000, stopOnInteraction: false }),
+  ]);
+
+  const [emblaRef2] = useEmblaCarousel({ loop: true, align: "center", direction: "rtl" }, [
+    Autoplay({ delay: 3500, stopOnInteraction: false }),
+  ]);
 
   return (
     <section id="events" className="section-padding relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-background">
@@ -89,29 +172,27 @@ const UpcomingEventsSection = () => {
           </div>
         </ScrollAnimation>
 
-        {/* Line 1 - Floating Left */}
+        {/* Line 1 Carousel */}
         <ScrollAnimation delay={0.2}>
-          <div className="mb-12 overflow-hidden">
-            <div className="flex gap-8 floating-line-left">
+          <div className="mb-12 overflow-hidden" ref={emblaRef1}>
+            <div className="flex cursor-grab active:cursor-grabbing py-4">
               {line1Events.map((event) => (
-                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
-              ))}
-              {line1Events.map((event) => (
-                <EventCard key={`${event.id}-clone`} event={event} onClick={() => setSelectedEvent(event)} />
+                <div key={event.id} className="flex-[0_0_auto] px-4 md:px-6">
+                  <EventCard event={event} onClick={() => setSelectedEvent(event)} />
+                </div>
               ))}
             </div>
           </div>
         </ScrollAnimation>
 
-        {/* Line 2 - Floating Right */}
+        {/* Line 2 Carousel */}
         <ScrollAnimation delay={0.3}>
-          <div className="overflow-hidden">
-            <div className="flex gap-8 floating-line-right">
+          <div className="overflow-hidden" ref={emblaRef2} dir="rtl">
+            <div className="flex cursor-grab active:cursor-grabbing py-4">
               {line2Events.map((event) => (
-                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
-              ))}
-              {line2Events.map((event) => (
-                <EventCard key={`${event.id}-clone`} event={event} onClick={() => setSelectedEvent(event)} />
+                <div key={event.id} className="flex-[0_0_auto] px-4 md:px-6" dir="ltr">
+                  <EventCard event={event} onClick={() => setSelectedEvent(event)} />
+                </div>
               ))}
             </div>
           </div>
@@ -185,50 +266,16 @@ const UpcomingEventsSection = () => {
       </AnimatePresence>
 
       <style>{`
-        .floating-line-left {
-          animation: floatLeft 4s linear infinite;
-        }
-
-        .floating-line-left:hover {
-          animation-play-state: paused;
-        }
-
-        .floating-line-right {
-          animation: floatRight 4s linear infinite;
-        }
-
-        .floating-line-right:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes floatLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes floatRight {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
         .event-card {
           flex-shrink: 0;
-          width: 260px;
-          height: 280px;
+          width: 280px;
+          height: 320px;
         }
 
         @media (min-width: 768px) {
           .event-card {
-            width: 320px;
-            height: 400px;
+            width: 350px;
+            height: 450px;
           }
         }
       `}</style>
@@ -240,49 +287,53 @@ const EventCard = ({ event, onClick }: { event: any, onClick?: () => void }) => 
   return (
     <div
       onClick={onClick}
-      className="event-card group relative rounded-3xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border border-primary/20"
+      className="event-card group relative rounded-[2rem] overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-[1.02] border border-white/10 shadow-lg"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0">
         <img
           src={event.image}
           alt={event.title}
-          className="w-full h-full object-cover transition-transform duration-300"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:via-black/50 transition-all duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent/5" />
       </div>
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 text-white">
-        {/* Icon */}
-        <div className="mb-2 md:mb-4 inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 group-hover:scale-110 transform transition-transform duration-300">
+      {/* Floating Icon (Top Left) */}
+      <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10">
+        <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
           <event.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
         </div>
+      </div>
 
+      {/* Content (Bottom) */}
+      <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 text-white z-10">
         {/* Title */}
-        <h3 className="font-display font-semibold text-xl md:text-2xl mb-2 transition-all duration-300">
+        <h3 className="font-display font-bold text-2xl md:text-3xl mb-3 leading-tight">
           {event.title}
         </h3>
 
         {/* Date and Location */}
-        <div className="flex items-center gap-2 text-sm text-gray-300 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Calendar className="w-4 h-4" />
-          <span>{event.date}</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-300 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <MapPin className="w-4 h-4" />
-          <span>{event.location}</span>
+        <div className="space-y-2 mb-4">
+          <div className="flex items-center gap-2 text-sm md:text-base text-gray-200 font-medium">
+            <Calendar className="w-4 h-4 text-primary" />
+            <span>{event.date}</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm md:text-base text-gray-200 font-medium">
+            <MapPin className="w-4 h-4 text-primary" />
+            <span>{event.location}</span>
+          </div>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground mb-2 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">
+        <p className="text-sm text-gray-300 mb-4 md:mb-6 line-clamp-2 leading-relaxed">
           {event.description}
         </p>
 
         {/* CTA Button */}
-        <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 text-white font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1 w-fit hover:from-primary/30 hover:to-primary/15">
-          Learn More
-          <ArrowRight className="w-4 h-4" />
+        <button className="flex items-center justify-between w-full px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-semibold transition-all duration-300 group-hover:bg-primary group-hover:border-primary">
+          <span>Learn More</span>
+          <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ const BrandSection = () => {
                     {/* Text Content */}
                     <div className="space-y-8 animate-fade-up">
                         <div>
-                            <p className="section-subtitle mb-4">My Brand</p>
+                            <p className="section-subtitle mb-4">Our Brand</p>
                             <h2 className="section-title">
                                 HINLERS <span className="text-gradient-primary">Apparel</span>
                             </h2>
@@ -52,20 +52,22 @@ const BrandSection = () => {
 
                     {/* Visual/Image Placeholder */}
                     <div className="relative animate-fade-up animation-delay-200">
-                        <div className="aspect-square rounded-3xl overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm relative group">
-                            <img
-                                src="https://hinlers.com/cdn/shop/files/g5_resized.jpg?v=1737155278&width=720"
-                                alt="Hinlers Brand"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
+                        <a href="https://hinlers.com" target="_blank" rel="noopener noreferrer" className="block cursor-pointer">
+                            <div className="aspect-square rounded-3xl overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm relative group">
+                                <img
+                                    src="https://hinlers.com/cdn/shop/files/g5_resized.jpg?v=1737155278&width=720"
+                                    alt="Hinlers Brand"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
 
-                            {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span className="text-white font-medium px-6 py-2 rounded-full border border-white/30 backdrop-blur-md bg-white/10">
-                                    View Collection
-                                </span>
+                                {/* Overlay on hover */}
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span className="text-white font-medium px-6 py-2 rounded-full border border-white/30 backdrop-blur-md bg-white/10">
+                                        View Collection
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         {/* Floating Badge */}
                         <div className="absolute -bottom-6 -right-6 bg-background border border-border p-4 rounded-2xl shadow-xl animate-float">

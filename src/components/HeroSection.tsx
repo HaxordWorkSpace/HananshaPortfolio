@@ -25,11 +25,7 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center text-center pb-12 px-4">
 
-        <div className="animate-fade-up">
-          <span className="inline-block py-1 px-3 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-widest uppercase mb-2 backdrop-blur-sm">
-            Official Portfolio
-          </span>
-        </div>
+
 
         <p className="mt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-light tracking-wide animate-fade-up animation-delay-400">
           Singer <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer

@@ -77,22 +77,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Newsletter</h4>
-            <p className="text-muted-foreground text-sm mb-4">
-              Subscribe to get updates on new releases, tour dates, and exclusive content.
-            </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-2 bg-secondary/50 rounded-xl border border-border/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
-              />
-              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-colors text-sm font-medium">
-                Join
-              </button>
-            </form>
-          </div>
+
         </div>
 
         {/* Bottom Bar */}

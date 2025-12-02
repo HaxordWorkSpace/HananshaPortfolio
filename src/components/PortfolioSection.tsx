@@ -1,19 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { Play, Image as ImageIcon, SkipBack, SkipForward, ArrowRight, Heart } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
-import hanan1_1 from "@/assets/hanan1 (1).jpg";
-import hanan1_2 from "@/assets/hanan1 (2).jpg";
-import hanan1_3 from "@/assets/hanan1 (3).jpg";
-import album1 from "@/assets/album-1.png";
-import album2 from "@/assets/album-2.png";
-import album3 from "@/assets/album-3.png";
+import portfolio1 from "@/assets/portfolio1.jpg";
+import portfolio2 from "@/assets/portfolio2.jpg";
+import portfolio3 from "@/assets/portfolio3.jpg";
+import portfolio4 from "@/assets/portfolio4.jpg";
+import portfolio5 from "@/assets/portfolio5.jpg";
+import portfolio6 from "@/assets/portfolio6.jpg";
 
 const portfolioItems = [
   {
     id: 1,
     type: "video",
     title: "Latest Album",
-    image: hanan1_1,
+    image: portfolio1,
     category: "Full Album",
     spotifyUrl: "https://open.spotify.com/embed/album/626TXwCa6PtZCdXv8yubvQ?utm_source=generator",
     isAlbum: true
@@ -22,7 +22,7 @@ const portfolioItems = [
     id: 2,
     type: "video",
     title: "Featured Track",
-    image: hanan1_2,
+    image: portfolio2,
     category: "Single",
     spotifyUrl: "https://open.spotify.com/track/1kl8HxZrfUluGnW5rorqzC?si=5463ebe202464ea0",
     isAlbum: false
@@ -31,7 +31,7 @@ const portfolioItems = [
     id: 3,
     type: "video",
     title: "New Release",
-    image: hanan1_3,
+    image: portfolio3,
     category: "Single",
     spotifyUrl: "https://open.spotify.com/track/0fzIiQPOjv8kcSLCYTUSf3?si=6fa682fbc6844fe1",
     isAlbum: false
@@ -40,7 +40,7 @@ const portfolioItems = [
     id: 4,
     type: "video",
     title: "Live Performance",
-    image: album1,
+    image: portfolio4,
     category: "Live Sessions",
     spotifyUrl: null,
     isAlbum: false
@@ -49,7 +49,7 @@ const portfolioItems = [
     id: 5,
     type: "image",
     title: "Behind The Scenes",
-    image: album2,
+    image: portfolio5,
     category: "Studio",
     spotifyUrl: null,
     isAlbum: false
@@ -58,7 +58,7 @@ const portfolioItems = [
     id: 6,
     type: "video",
     title: "Music Video",
-    image: album3,
+    image: portfolio6,
     category: "Official Video",
     spotifyUrl: null,
     isAlbum: false
@@ -170,7 +170,9 @@ const PortfolioSection = () => {
                           <button className="text-white/70 hover:text-primary transition-colors hover:scale-125 transform">
                             <SkipBack className="w-6 h-6" />
                           </button>
-                          <button className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/20">
+                          <button
+                            onClick={() => window.dispatchEvent(new Event('mute-video'))}
+                            className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/20">
                             <Play className="w-6 h-6 ml-1 fill-white" />
                           </button>
                           <button className="text-white/70 hover:text-primary transition-colors hover:scale-125 transform">
@@ -180,6 +182,7 @@ const PortfolioSection = () => {
 
                         {/* Action Button */}
                         <a
+                          onClick={() => window.dispatchEvent(new Event('mute-video'))}
                           href={item.spotifyUrl || "#portfolio"}
                           target={item.spotifyUrl ? "_blank" : "_self"}
                           rel={item.spotifyUrl ? "noopener noreferrer" : undefined}
@@ -230,7 +233,7 @@ const PortfolioSection = () => {
         <ScrollAnimation delay={0.6}>
           <div className="text-center mt-16">
             <a href="#portfolio" className="btn-outline inline-flex group">
-              View All Projects
+              View All Tracks
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </a>
           </div>

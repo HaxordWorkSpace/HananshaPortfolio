@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, Calendar, Briefcase, ShoppingBag, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FaFacebookF, FaTwitter, FaPinterestP, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaPinterestP, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa";
 
 const navLinks = [
   { name: "Home", href: "#home", icon: Home },
@@ -14,9 +14,9 @@ const navLinks = [
 
 const socialLinks = [
   { icon: FaInstagram, href: "https://www.instagram.com/hanansha_official" },
-  { icon: FaYoutube, href: "https://www.youtube.com/@hanansha" },
+  { icon: FaYoutube, href: "https://youtu.be/qW7ftY_vsXM?si=k1TKJKf9AecbozTT" },
   { icon: FaFacebookF, href: "#" },
-  { icon: FaTwitter, href: "#" },
+  { icon: FaSpotify, href: "https://open.spotify.com/artist/5WGX9SJLY7TCqRUJcfcaYi?si=R-P8DdQzQyKc2rPBzDoiHQ" },
 ];
 
 interface NavigationProps {
@@ -91,7 +91,7 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
           </button>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay*/}
         <div
           className={cn(
             "fixed inset-0 top-[72px] bg-background/98 backdrop-blur-xl z-40 transition-all duration-500",

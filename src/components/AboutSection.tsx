@@ -74,6 +74,25 @@ const AboutSection = () => {
         video.play();
       });
     }
+    const handleMute = () => {
+      if (video) {
+        video.muted = true;
+      }
+    };
+
+    const handleBlur = () => {
+      if (document.activeElement instanceof HTMLIFrameElement) {
+        handleMute();
+      }
+    };
+
+    window.addEventListener("blur", handleBlur);
+    window.addEventListener("mute-video", handleMute);
+
+    return () => {
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("mute-video", handleMute);
+    };
   }, []);
 
   return (
