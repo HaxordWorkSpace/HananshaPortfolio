@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import { FaFacebookF, FaTwitter, FaPinterestP, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -11,10 +11,10 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: FaFacebookF, href: "#", label: "Facebook" },
-  { icon: FaTwitter, href: "#", label: "Twitter" },
-  { icon: FaPinterestP, href: "#", label: "Pinterest" },
-  { icon: FaInstagram, href: "https://www.instagram.com/hanaaaneyy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+  { icon: FaInstagram, href: "https://www.instagram.com/hanansha_official", label: "Instagram" },
+  { icon: FaYoutube, href: "https://youtu.be/qW7ftY_vsXM?si=k1TKJKf9AecbozTT", label: "YouTube" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/hananshaahmusic", label: "Facebook" },
+  { icon: FaSpotify, href: "https://open.spotify.com/artist/5WGX9SJLY7TCqRUJcfcaYi?si=R-P8DdQzQyKc2rPBzDoiHQ", label: "Spotify" },
 ];
 
 const Footer = () => {
@@ -86,8 +86,9 @@ const Footer = () => {
             © {currentYear} Hanan Sha. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-primary" fill="currentColor" /> for music lovers
+            Powered by <span className="font-semibold text-primary">Haxord Technologies</span>
           </p>
+
         </div>
       </div>
     </footer>

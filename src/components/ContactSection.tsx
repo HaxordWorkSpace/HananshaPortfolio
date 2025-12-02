@@ -109,21 +109,7 @@ const ContactSection = () => {
               </div>
 
               {/* Social Links */}
-              <div className="pt-6 border-t border-border/30">
-                <p className="text-sm text-muted-foreground mb-4">Follow Me</p>
-                <div className="flex gap-3">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      aria-label={social.label}
-                      className="social-icon"
-                    >
-                      <social.icon size={16} />
-                    </a>
-                  ))}
-                </div>
-              </div>
+              
             </div>
 
             {/* Booking info */}

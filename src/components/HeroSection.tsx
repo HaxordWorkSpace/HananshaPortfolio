@@ -28,7 +28,7 @@ const HeroSection = () => {
 
 
         <p className="mt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-light tracking-wide animate-fade-up animation-delay-400">
-          Singer <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer
+          Playback Singer <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer
         </p>
 
         <div className="mt-4 flex flex-row gap-3 animate-fade-up animation-delay-600">
@@ -36,13 +36,13 @@ const HeroSection = () => {
             href="#portfolio"
             className="btn-primary min-w-[130px] px-4"
           >
-            View Work
+            View Events
           </a>
           <a
             href="#contact"
             className="btn-outline min-w-[130px] px-4 border-white/20 text-white hover:bg-white hover:text-black"
           >
-            Contact Me
+            Contact Us
           </a>
         </div>
       </div>

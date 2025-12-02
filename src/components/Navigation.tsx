@@ -15,7 +15,7 @@ const navLinks = [
 const socialLinks = [
   { icon: FaInstagram, href: "https://www.instagram.com/hanansha_official" },
   { icon: FaYoutube, href: "https://youtu.be/qW7ftY_vsXM?si=k1TKJKf9AecbozTT" },
-  { icon: FaFacebookF, href: "#" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/hananshaahmusic" },
   { icon: FaSpotify, href: "https://open.spotify.com/artist/5WGX9SJLY7TCqRUJcfcaYi?si=R-P8DdQzQyKc2rPBzDoiHQ" },
 ];
 
@@ -69,7 +69,7 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
             : "bg-transparent py-6"
         )}
       >
-        <div className="container-custom flex items-center justify-between">
+        <div className="container-custom flex items-center justify-between relative z-50">
           <a
             href="#home"
             onClick={(e) => {
@@ -94,13 +94,13 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
         {/* Mobile Menu Overlay*/}
         <div
           className={cn(
-            "fixed inset-0 top-[72px] bg-background/98 backdrop-blur-xl z-40 transition-all duration-500",
+            "fixed inset-0 bg-background/98 backdrop-blur-xl z-40 transition-all duration-500",
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
+          <div className="flex flex-col items-center justify-center h-full gap-8">
             {navLinks.map((link, index) => (
               <a
                 key={link.name}

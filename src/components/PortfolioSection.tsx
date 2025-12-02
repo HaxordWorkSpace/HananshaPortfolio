@@ -99,7 +99,7 @@ const PortfolioSection = () => {
         {/* Section Header */}
         <ScrollAnimation>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="section-subtitle mb-4">My Work</p>
+            <p className="section-subtitle mb-4">Our Work</p>
             <h2 className="section-title">
               Visual <span className="text-gradient-primary">Experience</span>
             </h2>

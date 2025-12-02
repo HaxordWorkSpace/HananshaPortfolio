@@ -34,7 +34,7 @@ const SkillsSection = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div>
-              <p className="section-subtitle mb-4">My Expertise</p>
+              <p className="section-subtitle mb-4">Expertise</p>
               <h2 className="section-title leading-tight">
                 Professional Skills & <br />
                 <span className="text-gradient-primary">Artistic Abilities</span>
