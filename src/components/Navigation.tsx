@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: FaInstagram, href: "https://www.instagram.com/hanansha_official" },
+  { icon: FaInstagram, href: "https://www.instagram.com/hanaaaneyy?igsh=emR4eXVyNWp3aXI2" },
   { icon: FaYoutube, href: "https://youtu.be/qW7ftY_vsXM?si=k1TKJKf9AecbozTT" },
   { icon: FaFacebookF, href: "https://www.facebook.com/hananshaahmusic" },
   { icon: FaSpotify, href: "https://open.spotify.com/artist/5WGX9SJLY7TCqRUJcfcaYi?si=R-P8DdQzQyKc2rPBzDoiHQ" },
@@ -75,7 +75,7 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
         <div className="container-custom flex items-center justify-between relative z-50">
           <a href="#home" onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }} className="flex items-center gap-0 font-display text-2xl font-bold tracking-tighter">
             <span className="text-primary">H</span>
-            <span className="text-foreground">anansha</span>
+            <span className="text-foreground">ananshaah</span>
           </a>
           <button className="text-foreground p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -120,7 +120,7 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
             {isExpanded ? (
               <>
                 <span className="inline text-primary text-3xl">H</span>
-                <span className="inline text-foreground text-3xl">anansha</span>
+                <span className="inline text-foreground text-3xl">ananshaah</span>
               </>
             ) : (
               <span className="block text-primary text-2xl">HS</span>

@@ -11,7 +11,7 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: FaInstagram, href: "https://www.instagram.com/hanansha_official", label: "Instagram" },
+  { icon: FaInstagram, href: "https://www.instagram.com/hanaaaneyy?igsh=emR4eXVyNWp3aXI2", label: "Instagram" },
   { icon: FaYoutube, href: "https://youtu.be/qW7ftY_vsXM?si=k1TKJKf9AecbozTT", label: "YouTube" },
   { icon: FaFacebookF, href: "https://www.facebook.com/hananshaahmusic", label: "Facebook" },
   { icon: FaSpotify, href: "https://open.spotify.com/artist/5WGX9SJLY7TCqRUJcfcaYi?si=R-P8DdQzQyKc2rPBzDoiHQ", label: "Spotify" },
@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="md:col-span-2 space-y-4">
             <a href="#home" className="flex items-center gap-0 font-display text-2xl font-bold tracking-tighter">
               <span className="text-primary">H</span>
-              <span className="text-foreground">anansha</span>
+              <span className="text-foreground">ananshaah</span>
             </a>
             <p className="text-muted-foreground max-w-md">
               Creating soulful melodies that touch hearts and inspire millions.
@@ -83,7 +83,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Hanan Sha. All rights reserved.
+            © {currentYear} Hanan Shaah. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm flex items-center gap-1">
             Powered by <span className="font-semibold text-primary">Haxord Technologies</span>
