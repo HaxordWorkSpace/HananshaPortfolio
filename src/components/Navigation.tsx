@@ -83,8 +83,22 @@ const Navigation = ({ isExpanded = false, onToggle }: NavigationProps) => {
         </div>
       </nav>
 
-      <div className={cn("fixed inset-0 bg-black/98 backdrop-blur-xl z-[10000] transition-all duration-500", isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")}>
-        <div className="flex flex-col items-center justify-center h-full gap-8">
+      <div
+        className={cn("fixed inset-0 bg-black/98 backdrop-blur-xl z-[10000] transition-all duration-500 flex items-center justify-center", isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")}
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        <button
+          className="absolute top-6 right-6 text-foreground p-2 hover:text-primary transition-colors"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <X size={32} />
+        </button>
+
+        <div
+          className="flex flex-col items-center justify-center gap-8"
+          onClick={(e) => e.stopPropagation()}
+        >
           {navLinks.map((link, index) => (
             <a key={link.name} href={link.href} onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }} className={cn("text-2xl font-display font-semibold tracking-wide transition-all duration-300", activeSection === link.href.slice(1) ? "text-primary" : "text-foreground hover:text-primary")} style={{ animationDelay: `${index * 100}ms` }}>
               {link.name}

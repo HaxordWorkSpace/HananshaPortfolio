@@ -7,14 +7,14 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "contact@hanansha.com",
-    link: "mailto:contact@hanansha.com",
+    value: "hananshaahmusic@gmail.com",
+    link: "hananshaahmusic@gmail.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+971 50 123 4567",
-    link: "tel:+971501234567",
+    value: "+91 7770007937",
+    link: "tel:+91 7770007937",
   },
   {
     icon: MapPin,
@@ -109,7 +109,7 @@ const ContactSection = () => {
               </div>
 
               {/* Social Links */}
-              
+
             </div>
 
             {/* Booking info */}
@@ -124,8 +124,7 @@ const ContactSection = () => {
                 href="mailto:bookings@hanansha.com"
                 className="text-primary hover:underline font-medium"
               >
-                bookings@hanansha.com
-              </a>
+                hananshaahmusic@gmail.com              </a>
             </div>
           </div>
 

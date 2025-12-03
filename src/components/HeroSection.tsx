@@ -1,4 +1,4 @@
-import heroImage from "@/assets/Hero.jpg";
+import heroImage from "@/assets/Hero.png";
 import heroMobileImage from "@/assets/HeroMobile.png";
 // Note: HEIC files are not standard for web browsers. 
 // If you want to use the HEIC file, please convert it to JPG/PNG.
@@ -28,7 +28,7 @@ const HeroSection = () => {
 
 
         <p className="mt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-light tracking-wide animate-fade-up animation-delay-400">
-          Playback Singer <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer
+          Musician <span className="text-primary">•</span> Youtuber <span className="text-primary">•</span> Performer
         </p>
 
         <div className="mt-4 flex flex-row gap-3 animate-fade-up animation-delay-600">
