@@ -80,10 +80,10 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="card-glass p-8 space-y-8">
+          <div className="space-y-6 lg:space-y-8">
+            <div className="card-glass p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8">
               <h3 className="text-2xl font-display font-semibold">
                 Contact Information
               </h3>
@@ -113,7 +113,7 @@ const ContactSection = () => {
             </div>
 
             {/* Booking info */}
-            <div className="card-glass p-8 bg-gradient-to-br from-primary/10 to-transparent">
+            <div className="card-glass p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-primary/10 to-transparent">
               <h3 className="text-xl font-display font-semibold mb-2">
                 For Bookings
               </h3>
@@ -129,7 +129,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="card-glass p-8">
+          <div className="card-glass p-4 sm:p-6 lg:p-8">
             <h3 className="text-2xl font-display font-semibold mb-6">
               Send a Message
             </h3>
